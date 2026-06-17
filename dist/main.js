@@ -54,15 +54,11 @@ const questions = [
 ];
 questions.forEach((question) => {
     console.log(question.Question);
-    if (question.isCorrect) {
-        console.log("Correct");
-    }
-    else {
-        console.log("Wrong");
-    }
+    console.log(`${question.isCorrect == true ? "Correct" : "Wrong"}`);
 });
 const score = questions.filter((f) => f.isCorrect).length;
 console.log(`Score: ${score} / 5`);
-console.log("Passed!");
+const result = score >= 3 ? "Passed" : "Failed";
+console.log(result);
 export {};
 //# sourceMappingURL=main.js.map

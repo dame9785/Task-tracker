@@ -51,7 +51,6 @@ const completionRate = (totalTasks / completedCount) * 100;
 console.log("Completion rate", completionRate);
 
 console.log("--------------------QUIZ SHOW---------------------------");
-
 interface question {
   Question: string;
   isCorrect: boolean;
@@ -81,13 +80,10 @@ const questions: question[] = [
 
 questions.forEach((question) => {
   console.log(question.Question);
-  if (question.isCorrect) {
-    console.log("Correct");
-  } else {
-    console.log("Wrong");
-  }
+  console.log(`${question.isCorrect == true ? "Correct" : "Wrong"}`);
 });
 
 const score = questions.filter((f) => f.isCorrect).length;
 console.log(`Score: ${score} / 5`);
-console.log("Passed!");
+const result = score >= 3 ? "Passed" : "Failed";
+console.log(result);
