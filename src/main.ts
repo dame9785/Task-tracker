@@ -1,15 +1,3 @@
-// const taskName1 = "Play fotboll";
-// const priority1 = 3;
-// const completed1 = true;
-
-// const taskName2 = "Study";
-// const priority2 = 2;
-// const completed2 = false;
-
-// const taskName3 = "Eat";
-// const priority3 = 4;
-// const completed3 = false;
-
 interface Task {
   taskNumb: number;
   task: string;
@@ -38,52 +26,52 @@ const tasks: Task[] = [
   },
 ];
 
-tasks.forEach((task) => {
-  console.log(`-------------TASK ${task.taskNumb}-------------`);
+const printTaskTracker = (): void => {
   console.log(
-    `Task: ${task.task} Priority: ${task.priority} Completed: ${task.completed}`,
+    "==================================TASK TRACKER ==================================",
   );
-});
+};
+
+const printAllTasks = (): void => {
+  tasks.forEach((task) => {
+    console.log(`-------------TASK ${task.taskNumb}-------------`);
+    console.log(
+      `Task: ${task.task} | Priority: ${task.priority} | Completed: ${task.completed}`,
+    );
+  });
+};
+
+//Get Total Task
+const getTotalTaskCount = (): number => {
+  return tasks.length;
+};
+
+//Add new task to Task array
+const addTask = (): Task[] => {
+  const newTask = {
+    taskNumb: 5,
+    task: "Shower",
+    priority: 4,
+    completed: true,
+  };
+
+  //Add new task to TASK ARRAY
+  tasks.push(newTask);
+
+  return tasks;
+};
+
+//Print task tracker.
+printTaskTracker();
+
+//Print All tasks
+printAllTasks();
+
+console.log(`Antal uppgifter: ${getTotalTaskCount()}`);
+
+const updatedTaskArray = addTask();
+console.log(`Uppdaterad antal uppgifter: ${updatedTaskArray.length}`);
 
 const completedCount = tasks.filter((f) => f.completed).length;
-const totalTasks = tasks.length;
-const completionRate = (totalTasks / completedCount) * 100;
+const completionRate = (getTotalTaskCount() / completedCount) * 100;
 console.log("Completion rate", completionRate);
-
-console.log("--------------------QUIZ SHOW---------------------------");
-interface question {
-  Question: string;
-  isCorrect: boolean;
-}
-const questions: question[] = [
-  {
-    Question: "Question 1",
-    isCorrect: true,
-  },
-  {
-    Question: "Question 2",
-    isCorrect: false,
-  },
-  {
-    Question: "Question 3",
-    isCorrect: true,
-  },
-  {
-    Question: "Question 4",
-    isCorrect: true,
-  },
-  {
-    Question: "Question 5",
-    isCorrect: false,
-  },
-];
-
-questions.forEach((question) => {
-  console.log(question.Question);
-  console.log(`${question.isCorrect == true ? "Correct" : "Wrong"}`);
-});
-
-const score = questions.filter((f) => f.isCorrect).length;
-console.log(`Score: ${score} / 5`);
-const result = score >= 3 ? "Passed" : "Failed";
-console.log(result);
